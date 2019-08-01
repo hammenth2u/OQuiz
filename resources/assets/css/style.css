@@ -1,0 +1,17 @@
+.intro {
+    padding-top: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    border-radius: 10px;
+}
+
+.column-home {
+    background-color: hsl(0, 0%, 96%);
+    margin-left: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-radius: 10px;
+}
+
+.form-horizontal {
+    margin-top: 1rem;
+}
