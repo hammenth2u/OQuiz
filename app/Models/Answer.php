@@ -12,4 +12,8 @@ class Answer extends Model
      * @var bool
      */
     public $timestamps = false;
+
+    public function answer(){
+        return $this->hasMany('App\Models\Question','answers_id');
+    }
 }

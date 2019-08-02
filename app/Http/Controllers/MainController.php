@@ -17,8 +17,8 @@ class MainController extends Controller
      */
 
     public function home(){
-        $resultQuiz = Quizze::all();
+        $resultQuiz = Quizze::where('status',1)->get();
         $resultAuthor = AppUser::all();
-        return view('layout.header').view('home',['quizList' => $resultQuiz, 'authorList' => $resultAuthor ]).view('layout.footer');
+        return view('layout.header').view('partials.nav').view('home',['quizList' => $resultQuiz, 'authorList' => $resultAuthor ]).view('layout.footer');
     }
 }

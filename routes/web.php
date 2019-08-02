@@ -17,12 +17,12 @@ $router->get('/', [
 ]);
 
 
-$router->get('/quiz/[id]', [
+$router->get('/quiz/{id}', [
     'as' => 'quiz',
     'uses' => 'QuizController@quiz'
 ]);
 
-$router->get('/quiz/[id]', [
+$router->post('/quiz/{id}', [
     'as' => 'quizPost',
     'uses' => 'QuizController@quizPost'
 ]);
@@ -63,7 +63,7 @@ $router->get('/tags', [
     'uses' => 'TagController@tags'
 ]);
 
-$router->get('/tags/[id]/quiz', [
+$router->get('/tags/{id}/quiz', [
     'as' => 'tagsQuiz',
     'uses' => 'TagController@quiz'
 ]);

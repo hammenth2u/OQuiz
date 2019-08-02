@@ -6,10 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Quizze extends Model
 {
-    /**
-     * Indicates if the model should be timestamped.
-     *
-     * @var bool
-     */
-    public $timestamps = false;
+    public function appUser()
+    {
+        return $this->belongsTo('App\Models\AppUser','app_users_id');
+    }
+    public function questions(){
+        return $this->hasMany('App\Models\Question','quizzes_id');
+    }
 }

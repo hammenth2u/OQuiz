@@ -6,19 +6,42 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
 
+use App\Models\Quizze;
+use App\Models\AppUser;
+use App\Models\Question;
+use App\Models\Level;
+use App\Models\Answer;
+
 class QuizController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @param $request Request objet
-     */
 
-    public function quiz(){
-        echo 'page quiz';
+    public function quiz($id){
+
+        $quizIdUnique = Quizze::find($id);
+        $listQuestion = $quizIdUnique->questions;
+  
+        foreach($listQuestion as $question)
+        {
+            $getAnswers = Question::find($question->id);
+            $answers[] = $getAnswers->answers;
+    
+            $getLevel = Question::find($question->id);
+            $levelUp[]= $getLevel->levels;
+            //dump($levelUp[0]->name);
+        }
+
+
+
+
+
+        return view('layout.header').view('partials.nav').view('quizcons', ['quizIdUnique'=>$quizIdUnique,
+                                                                            'listQuestion'=>$listQuestion,
+                                                                            'answers'=> $answers,
+                                                                            'levelUp'=> $levelUp
+                                                                            ]).view('layout.footer');
     }
 
     public function quizPost(){
-        
+        return view('layout.header').view('partials.nav').view('quizcons').view('layout.footer');
     }
 }

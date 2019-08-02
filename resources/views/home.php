@@ -14,15 +14,10 @@
             <div class="columns is-multiline is-centered has-text-primary">
                 <?php foreach($quizList as $currentList):?>
                     <div class="column column-home is-one-fifth">
-                        <h3><?=$currentList->title?></h3>
-                        <h5><?=$currentList->description?></h5>
-                        <p><?php foreach($authorList as $currentAuthor): ?>
-                            <?php if($currentList->app_users_id == $currentAuthor->id){
-                                echo $currentAuthor->firstname .' '.$currentAuthor->lastname;
-                            }
-                            endforeach; ?>
-                        </p>
-                        <a href="#">Ici le quiz !</a>
+                        <h3 class="title is-3"><?=$currentList->title?></h3>
+                        <h5 class="subtitle"><?=$currentList->description?></h5>
+                        <p><?=$currentList->appUser->firstname.' '.$currentList->appUser->lastname?></p>
+                        <a href="<?= route('quiz', ['id' => $currentList->id]); ?>">Ici le quiz !</a>
                     </div>
                 <?php endforeach;?>
             </div>

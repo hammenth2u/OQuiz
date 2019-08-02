@@ -1,118 +1,63 @@
-        
+<?php $currentIdTab = 0; 
+        $temp=0;
+        $count = 0;
+?>       
             <div>
-                <h2> Le chocolat - I 
-                    <span>xx questions</span>
+                <h2 class="title is-2"> <?= $quizIdUnique->title?>
+                    <span> xx questions</span>
                 </h2>
             </div>
 
             <div>
                 <h4> 
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+                <?= $quizIdUnique->description?>
                 </h4>
             </div>
 
             <div>
-                <p>by author name</p>
+                <p>by <?=$quizIdUnique->appUser->firstname.' '.$quizIdUnique->appUser->lastname?></p>
             </div>
-    
+
+            <br><br>
+            
             <div class="row">
-
+            
+                <?php foreach($listQuestion as $question):?>
+                
                 <div class="col question">
 
-                    <span class="level level--beginner">Débutant</span>
+                    <span class="level ">
 
-                    <div class="question__question">
-                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr. ?
+                   <?php echo $levelUp[$currentIdTab]["name"]; ?>
+                    
+                
+                    </span>
+
+                    <div class="question__question title is-5">
+                        <?= $question->question?>
                     </div>
                     <div>
                         <ul>
-                            <li>1. Lorem ipsum </li>
-                            <li>2. Lorem ipsum </li>
-                            <li>3. Lorem ipsum </li>
-                            <li>d. La réponse D </li>
-                        </ul> 
-                    </div>
-                </div>
+                        <?php foreach ($answers[$currentIdTab] as $key => $value): ?>
+                        <?php $count++; ?>
 
-                <div class="col question">
-                    <span class="level level--medium">Confirmé</span>
-                    <div class="question__question"> 
-                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr. ?
-                    </div>
-                    <div>
-                        <ul>
-                            <li>1. Lorem ipsum </li>
-                            <li>2. Lorem ipsum </li>
-                            <li>3. Lorem ipsum </li>
-                            <li>d. La réponse D </li>
-                        </ul> 
-                    </div>
-                </div>
+                                <li><?php echo $count.".".$value->description; ?></li>
 
-                <div class="col question">
-                    <span class="level level--expert">Expert</span>
-                    <div class="question__question">
-                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr. ?
-                    </div>
-                    <div>
-                        <ul>
-                            <li>1. Lorem ipsum </li>
-                            <li>2. Lorem ipsum </li>
-                            <li>3. Lorem ipsum </li>
-                            <li>d. La réponse D </li>
+                        <?php endforeach; ?>
+                        <?php $count=0; ?>
+                        <?php $currentIdTab++ ?>
+
                         </ul> 
+                        <br><br><br>
                     </div>
                 </div>
                 
-            </div>
-
-            <div class="row">
-
-                <div class="col question">
-
-                    <span class="level level--beginner">Débutant</span>
-
-                    <div class="question__question">
-                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr. ?
-                    </div>
-                    <div>
-                        <ul>
-                            <li>1. Lorem ipsum </li>
-                            <li>2. Lorem ipsum </li>
-                            <li>3. Lorem ipsum </li>
-                            <li>d. La réponse D </li>
-                        </ul> 
-                    </div>
-                </div>
-
-                <div class="col question">
-                    <span class="level level--medium">Confirmé</span>
-                    <div class="question__question"> 
-                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr. ?
-                    </div>
-                    <div>
-                        <ul>
-                            <li>1. Lorem ipsum </li>
-                            <li>2. Lorem ipsum </li>
-                            <li>3. Lorem ipsum </li>
-                            <li>d. La réponse D </li>
-                        </ul> 
-                    </div>
-                </div>
-
-                <div class="col question">
-                    <span class="level level--expert">Expert</span>
-                    <div class="question__question">
-                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr. ?
-                    </div>
-                    <div>
-                        <ul>
-                            <li>1. Lorem ipsum </li>
-                            <li>2. Lorem ipsum </li>
-                            <li>3. Lorem ipsum </li>
-                            <li>d. La réponse D </li>
-                        </ul> 
-                    </div>
-                </div>
+                <?php endforeach; ?>
                 
             </div>
+
+
+
+
+
+

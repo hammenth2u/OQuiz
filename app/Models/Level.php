@@ -6,10 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Level extends Model
 {
-    /**
-     * Indicates if the model should be timestamped.
-     *
-     * @var bool
-     */
-    public $timestamps = false;
+    
+    public function level(){
+        return $this->hasMany('App\Models\Question','levels_id');
+    }
+
 }

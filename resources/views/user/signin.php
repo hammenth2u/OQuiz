@@ -17,7 +17,7 @@
   <label class="label" for="password">Mot de passe</label>
   <div class="control">
     <input id="password" name="password" type="password" placeholder="Mot de passe" class="input " required=""><br><br>
-    <button type="submit" value="submit" class="button is-success is-outlined">Se connecter</a>
+    <button type="submit" value="submit" class="button is-success is-outlined">Se connecter</button>
   </div>
 </div>
 </fieldset>
