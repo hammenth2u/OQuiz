@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
 use App\Models\Quizze;
 use App\Models\AppUser;
+use App\Models\Tag;
 
 class MainController extends Controller
 {

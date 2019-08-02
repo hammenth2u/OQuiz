@@ -4,7 +4,7 @@
 ?>       
             <div>
                 <h2 class="title is-2"> <?= $quizIdUnique->title?>
-                    <span> xx questions</span>
+                    <span> <?=count($listQuestion);?> questions</span>
                 </h2>
             </div>
 
@@ -28,8 +28,7 @@
 
                     <span class="level ">
 
-                   <?php echo $levelUp[$currentIdTab]["name"]; ?>
-                    
+                    <?php echo $question->levels->name;?>
                 
                     </span>
 

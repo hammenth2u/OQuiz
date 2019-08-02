@@ -19,15 +19,13 @@ class QuizController extends Controller
 
         $quizIdUnique = Quizze::find($id);
         $listQuestion = $quizIdUnique->questions;
-  
+
+
         foreach($listQuestion as $question)
         {
             $getAnswers = Question::find($question->id);
             $answers[] = $getAnswers->answers;
     
-            $getLevel = Question::find($question->id);
-            $levelUp[]= $getLevel->levels;
-            //dump($levelUp[0]->name);
         }
 
 
@@ -36,8 +34,7 @@ class QuizController extends Controller
 
         return view('layout.header').view('partials.nav').view('quizcons', ['quizIdUnique'=>$quizIdUnique,
                                                                             'listQuestion'=>$listQuestion,
-                                                                            'answers'=> $answers,
-                                                                            'levelUp'=> $levelUp
+                                                                            'answers'=> $answers
                                                                             ]).view('layout.footer');
     }
 

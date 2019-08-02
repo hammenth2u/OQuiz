@@ -13,4 +13,6 @@ class Quizze extends Model
     public function questions(){
         return $this->hasMany('App\Models\Question','quizzes_id');
     }
+
+
 }

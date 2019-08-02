@@ -13,11 +13,4 @@ class AppUser extends Model
      */
     protected $table = 'app_users';
 
-
-    /**
-     * Indicates if the model should be timestamped.
-     *
-     * @var bool
-     */
-    public $timestamps = false;
 }
