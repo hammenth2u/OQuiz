@@ -1,13 +1,16 @@
-<nav class="navbar" role="navigation" aria-label="main navigation">
+<nav class="navbar has-background-grey-lighter" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item" href="<?=route('home')?>">
       <h1 class="title">O'Quiz</h1>
     </a>
-    <a class="navbar-item" href="<?=route('home')?>">
+    <a class="navbar-item is-uppercase" href="<?=route('home')?>">
         Accueil
       </a>
-  <a class="navbar-item" href="<?=route('account')?>">
+  <a class="navbar-item is-uppercase" href="<?=route('account')?>">
         Mon compte
+      </a>
+      <a class="navbar-item is-uppercase" href="<?=route('tags')?>">
+        Sujets
       </a>
 
     <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navMenu">

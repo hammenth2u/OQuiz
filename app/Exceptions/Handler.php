@@ -10,6 +10,7 @@ use Laravel\Lumen\Exceptions\Handler as ExceptionHandler;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
+
 class Handler extends ExceptionHandler
 {
     /**

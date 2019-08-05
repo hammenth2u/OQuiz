@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
 
+use App\Models\AppUser;
+//use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Hash;
+
 class UserController extends Controller
 {
     /**
@@ -18,7 +22,21 @@ class UserController extends Controller
         return view('layout.header').view('partials.nav').view('user.signup').view('layout.footer');
     }
 
-    public function signupPost(){
+    public function signupPost(Request $request){
+        $firstname = $request->input('firstname', '');
+        $lastname = $request->input('lastname', '');
+        $email = $request->input('mail', '');
+        //$passwordCrypt = password_hash($request->input('password',''),1); 
+        $passwordCrypt = Hash::make($request->input('password','')); 
+
+
+        $results = AppUser::insert(['firstname' => $firstname,
+                                    'lastname' => $lastname,
+                                    'email' => $email,
+                                    'password' => $passwordCrypt]);
+
+
+        return redirect()->route('home') ;
 
     }
 

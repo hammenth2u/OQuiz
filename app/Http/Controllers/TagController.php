@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
 
-class QuizController extends Controller
+use App\Models\Tag;
+
+class TagController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -14,11 +16,18 @@ class QuizController extends Controller
      * @param $request Request objet
      */
 
-    public function quiz(){
-        echo 'page quiz';
+    public function tags(){
+        $tagList = Tag::all();
+        return view('layout.header').view('partials.nav').view('tags',['tagList'=>$tagList]).view('layout.footer');
     }
 
-    public function tags(){
-        echo 'page tags';
+    public function quiz($id){
+        $tagUnique = Tag::find($id);
+
+        
+        return view('layout.header').view('partials.nav').view('quiztag', ['tagUnique'=>$tagUnique
+        ]).view('layout.footer');
     }
+
+
 }

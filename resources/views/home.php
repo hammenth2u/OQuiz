@@ -14,10 +14,10 @@
             <div class="columns is-multiline is-centered has-text-primary">
                 <?php foreach($quizList as $currentList):?>
                     <div class="column column-home is-one-fifth">
-                        <h3 class="title is-3"><?=$currentList->title?></h3>
-                        <h5 class="subtitle"><?=$currentList->description?></h5>
+                        <h3 class="has-text-black"><?=$currentList->title?></h3>
+                        <h5><?=$currentList->description?></h5>
                         <p><?=$currentList->appUser->firstname.' '.$currentList->appUser->lastname?></p>
-                        <a href="<?= route('quiz', ['id' => $currentList->id]); ?>">Ici le quiz !</a>
+                        <a href="<?= route('quiz', ['id' => $currentList->id]); ?>">Démarrez le quiz !</a>
                     </div>
                 <?php endforeach;?>
             </div>
