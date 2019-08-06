@@ -1,3 +1,5 @@
+<?=view('layout.header').view('partials.nav')?>
+
 <div class="container">
             <div class="intro has-text-centered has-text-white has-background-primary">
                 <h1 class="title has-text-white"> Bienvenue sur O'Quiz </h1>
@@ -21,6 +23,8 @@
                     </div>
                 <?php endforeach;?>
             </div>
+
+<?=view('layout.footer')?>
 
 
 

@@ -6,9 +6,18 @@
     <a class="navbar-item is-uppercase" href="<?=route('home')?>">
         Accueil
       </a>
+<?php if(!empty($connectedUser)):?>
   <a class="navbar-item is-uppercase" href="<?=route('account')?>">
         Mon compte
       </a>
+<?php endif;?>
+<?php if(empty($connectedUser)):?>
+  <a class="navbar-item is-uppercase" href="<?=route('signup')?>">
+        Mon compte
+      </a>
+<?php endif;?>
+
+
       <a class="navbar-item is-uppercase" href="<?=route('tags')?>">
         Sujets
       </a>
@@ -23,15 +32,27 @@
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
+
+
+
+
           <a class="button is-primary" href="<?=route('signup')?>">
             <strong>S'enregistrer</strong>
           </a>
+
+          <?php if(empty($connectedUser)):?>
           <a class="button is-light" href="<?=route('signin')?>">
             Se connecter
           </a>
+          <?php endif ?>
+
+          <?php if (!empty($connectedUser)) : ?>
           <a class="button is-light" href="<?=route('logout')?>">
             Déconnexion
           </a>
+          <?php endif ?>
+
+
         </div>
       </div>
       </div>

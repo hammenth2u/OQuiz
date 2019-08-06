@@ -13,26 +13,26 @@ use App\Models\Level;
 use App\Models\Answer;
 use App\Models\Tag;
 use App\Models\QuizzeHasTag;
+use App\Utils\UserSession;
 
 class QuizController extends Controller
 {
 
     public function quiz($id){
 
+        $quizIdUnique = Quizze::find($id);
+        $listQuestion = $quizIdUnique->questions;
         
+
+        return view('quiz.quizcons', ['quizIdUnique'=>$quizIdUnique,'listQuestion'=>$listQuestion]);
+    
+    }
+
+    public function quizPost(Request $request,$id){
 
         $quizIdUnique = Quizze::find($id);
         $listQuestion = $quizIdUnique->questions;
 
-
-        
-        return view('layout.header').view('partials.nav').view('quizcons', ['quizIdUnique'=>$quizIdUnique,
-                                                                            'listQuestion'=>$listQuestion,
-                                                                            
-                                                                            ]).view('layout.footer');
-    }
-
-    public function quizPost(){
-        return view('layout.header').view('partials.nav').view('quizcons').view('layout.footer');
+        return view('quiz.quizcons', ['quizIdUnique'=>$quizIdUnique,'listQuestion'=>$listQuestion]);;;
     }
 }

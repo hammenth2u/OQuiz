@@ -1,3 +1,16 @@
+<?=view('layout.header').view('partials.nav')?>
+
+<?php if (!empty($errorList)) : ?>
+<div class="notification is-danger" role="alert">
+    <button type="button" class="delete" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    <?php foreach ($errorList as $currentError) : ?>
+    <div><?= $currentError ?></div>
+    <?php endforeach ?>
+</div>
+<?php endif ?>
+
 <div class="container">
     <div class="columns is-centered">
     <div class="column is-half">
@@ -6,18 +19,18 @@
 
 <!-- Text input-->
 <div class="field">
-  <label class="label" for="firstname">Nom</label>
+  <label class="label" for="lastname">Nom</label>
   <div class="control">
-    <input id="firstname" name="firstname" type="text" placeholder="Nom" class="input " required="">
+    <input id="lastname" value="<?= $inputValues['lastname'] ?>" name="lastname" type="text" placeholder="Nom" class="input " required="">
 
   </div>
 </div>
 
 <!-- Text input-->
 <div class="field">
-  <label class="label" for="lastname">Prénom</label>
+  <label class="label" for="firstname">Prénom</label>
   <div class="control">
-    <input id="lastname" name="lastname" type="text" placeholder="Prénom" class="input " required="">
+    <input id="firstname" value="<?= $inputValues['firstname'] ?>" name="firstname" type="text" placeholder="Prénom" class="input " required="">
 
   </div>
 </div>
@@ -49,7 +62,7 @@
     </a>
   </div>
   <div class="control">
-    <input id="mail" name="mail" class="input " placeholder="Adresse e-mail" type="text" required="">
+    <input id="mail" value="<?= $inputValues['email'] ?>" name="mail" class="input " placeholder="Adresse e-mail" type="text" required="">
   </div>
 </div>
 <button type="submit" value="submit" class="button is-success is-outlined">S'enregistrer</a>
@@ -59,3 +72,5 @@
 </div>
 </div>
 </div>
+
+<?=view('layout.footer')?>
