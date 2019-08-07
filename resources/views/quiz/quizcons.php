@@ -16,26 +16,27 @@
 
                     foreach ($_POST as $questionId => $userResponseId) {
                         $question = $listQuestion->find($questionId);
+                        $answer= $listAnswer->find($userResponseId);
                 
                         //dump($question);
                         //$response=$response.$question.'<br>';
                 
                         if ($question->answers_id == $userResponseId) {
                             echo $question->question . ' : Bonne réponse<br>';
-                            $message3 =$message3.$question->question . ' : Bonne réponse'."\r\n";
+                            $message3 =$message3.$question->question . ' : Bonne réponse'."\r\n"."Ta réponse: ".$answer->description."\r\n"."\r\n";
                             $score++;
                         }
                         else {
                             echo $question->question . ' : Mauvaise réponse<br>';
-                            $message3 =$message3.$question->question . ' : Mauvaise réponse'."\r\n";
+                            $message3 =$message3.$question->question . ' : Mauvaise réponse'."\r\n"."Ta réponse: ".$answer->description."\r\n".'La bonne réponse était: '."\r\n"."\r\n";
                         }
                     
                         
 
                         
                     }
-                    $message1 ='Bonjour '.$connectedUser->firstname.' '.$connectedUser->lastname.",\r\n";
-                    $message2 ='Votre score est de:'.$score.'/'.count($listQuestion)."\r\n";
+                    $message1 ='Bonjour '.$connectedUser->firstname.' '.$connectedUser->lastname.",\r\n"."\r\n";
+                    $message2 ='Votre score est de:'.$score.'/'.count($listQuestion)."\r\n"."\r\n"."\r\n";
                     mail($connectedUser->email,'Quiz score', $message1.$message2.$message3);
 
                 }    

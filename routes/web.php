@@ -67,3 +67,13 @@ $router->get('/tags/{id}/quiz', [
     'as' => 'tagsQuiz',
     'uses' => 'TagController@quiz'
 ]);
+
+$router->get('/admin', [
+    'as' => 'admin',
+    'uses' => 'UserController@admin'
+]);
+
+$router->post('/admin', [
+    'as' => 'adminPost',
+    'uses' => 'UserController@adminPost'
+]);

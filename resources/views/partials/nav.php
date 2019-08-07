@@ -17,6 +17,15 @@
       </a>
 <?php endif;?>
 
+<?php if(!empty($connectedUser)):?>
+  <?php if($connectedUser->role =='admin'):?>
+      <a class="navbar-item is-uppercase" href="<?=route('admin')?>">
+        Admin
+      </a>
+    
+  <?php endif;?>
+<?php endif ?>
+
 
       <a class="navbar-item is-uppercase" href="<?=route('tags')?>">
         Sujets
@@ -35,10 +44,12 @@
 
 
 
-
+          <?php if(empty($connectedUser)):?>
           <a class="button is-primary" href="<?=route('signup')?>">
             <strong>S'enregistrer</strong>
           </a>
+          <?php endif ?>
+
 
           <?php if(empty($connectedUser)):?>
           <a class="button is-light" href="<?=route('signin')?>">
@@ -47,10 +58,12 @@
           <?php endif ?>
 
           <?php if (!empty($connectedUser)) : ?>
-          <a class="button is-light" href="<?=route('logout')?>">
-            Déconnexion
+          <a class="button is-primary" href="<?=route('logout')?>">
+            <strong>Déconnexion</strong>
           </a>
           <?php endif ?>
+
+
 
 
         </div>

@@ -22,9 +22,10 @@ class QuizController extends Controller
 
         $quizIdUnique = Quizze::find($id);
         $listQuestion = $quizIdUnique->questions;
+        $listAnswer = Answer::all();
         
 
-        return view('quiz.quizcons', ['quizIdUnique'=>$quizIdUnique,'listQuestion'=>$listQuestion]);
+        return view('quiz.quizcons', ['quizIdUnique'=>$quizIdUnique,'listQuestion'=>$listQuestion,'listAnswer'=>$listAnswer]);
     
     }
 
@@ -32,7 +33,8 @@ class QuizController extends Controller
 
         $quizIdUnique = Quizze::find($id);
         $listQuestion = $quizIdUnique->questions;
+        $listAnswer = Answer::all();
 
-        return view('quiz.quizcons', ['quizIdUnique'=>$quizIdUnique,'listQuestion'=>$listQuestion]);;;
+        return view('quiz.quizcons', ['quizIdUnique'=>$quizIdUnique,'listQuestion'=>$listQuestion,'listAnswer'=>$listAnswer]);;;
     }
 }

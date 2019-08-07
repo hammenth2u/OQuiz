@@ -213,5 +213,30 @@ class UserController extends Controller
     }
 /*##################################################################################################################################*/
 /*##################################################################################################################################*/
+    public function admin(){
+        if (UserSession::isConnected()) {
+            // On test que le user soit un admin
+            if (UserSession::isAdmin()) {
+                
+                //$platformList = Platform::orderBy('name')->get();
+              
+                return view('user.admin');
+            }
+            else {
+                // On retourne le code erreur HTTP 403 forbidden
+                abort(403);
+            }
+        }
+        // Sinon
+        else {
+            // On le redirige vers la page de connexion
+            return redirect()->route('signin');
+        }
 
+    }
+/*##################################################################################################################################*/
+/*##################################################################################################################################*/
+    public function adminPost(){
+
+    }
 }
