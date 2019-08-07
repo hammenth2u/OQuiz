@@ -6,25 +6,49 @@
         <?php if(!empty($connectedUser)):?>
             <?php $count = 1; ?>
             <?php $score = 0; ?> 
-            <?php $response = '' ?> 
+            <?php $message3='' ?> 
 
 <div class=" has-text-centered">
-            <?php if (isset($_POST)){
 
-                foreach ($_POST as $questionId => $userResponseId) {
-                    $question = $listQuestion->find($questionId);
-             
-                    //dump($question);
-             
-                    if ($question->answers_id == $userResponseId) {
-                        echo $question->question . ' : Bonne réponse<br>';
-                        $score++;
+        <?php if (isset($_POST)){
+                if(count($_POST)>=1){
+                //dump($_POST);
+
+                    foreach ($_POST as $questionId => $userResponseId) {
+                        $question = $listQuestion->find($questionId);
+                
+                        //dump($question);
+                        //$response=$response.$question.'<br>';
+                
+                        if ($question->answers_id == $userResponseId) {
+                            echo $question->question . ' : Bonne réponse<br>';
+                            $message3 =$message3.$question->question . ' : Bonne réponse'."\r\n";
+                            $score++;
+                        }
+                        else {
+                            echo $question->question . ' : Mauvaise réponse<br>';
+                            $message3 =$message3.$question->question . ' : Mauvaise réponse'."\r\n";
+                        }
+                    
+                        
+
+                        
                     }
-                    else {
-                     echo $question->question . ' : Mauvaise réponse<br>';
-                    }
-                }
-            }?>
+                    $message1 ='Bonjour '.$connectedUser->firstname.' '.$connectedUser->lastname.",\r\n";
+                    $message2 ='Votre score est de:'.$score.'/'.count($listQuestion)."\r\n";
+                    mail($connectedUser->email,'Quiz score', $message1.$message2.$message3);
+
+                }    
+
+             /*
+            $fichier = fopen('/var/www/html/S07/S07-oquiz/public/test.txt', 'w+');
+            $texte="Bonjour ".$connectedUser->firstname." ,\n"."Voilà vos résultats du quiz :\n".$response;
+            fwrite($fichier,$texte);
+            fclose($fichier);
+            */
+
+            
+        }?>
 </div>
  
             
@@ -62,17 +86,18 @@
             <br><br>
 
             
-            <form action="" method="POST">
+            <form action="" method="post">
 
                 <div class="row has-text-centered has-text-grey-dark">
 
-                    <?php foreach($listQuestion as $question):?>
+                    <?php foreach($listQuestion->shuffle() as $question):?>
                     <div class="col question">
 
-                        <div class="question__question title is-5">
-                            <?= $question->question.' ('.$question->levels->name.')'?>
+                        <div class="question__question title is-4">
+                            <?= $question->question.' ('.$question->levels->name.')'?><br>
                             
-                            <a href="#">Wikipedia</a>
+                            <a target="_blank" href="https://fr.wikipedia.org/wiki/<?=$question->wiki?>">Wikipedia</a>
+                            <br>
                         </div>
 
                         <div class="question__choices">
@@ -87,16 +112,16 @@
                                         <?php if (count( $_POST)>=1):?>
                                         
                                             <?php if($currentAnswer->description == $question->answer->description):?>
-                                                <label class="has-text-primary" for="<?$question->id?>">
+                                                <label class="has-text-primary title is-5" for="<?$question->id?>">
                                                     <?=$currentAnswer->description;?>
                                                 </label> 
                                             <?php else:?>
-                                            <label class="has-text-danger" for="<?$question->id?>">
+                                            <label class="has-text-danger title is-5" for="<?$question->id?>">
                                                     <?=$currentAnswer->description;?>
                                                 </label> 
                                             <?php endif;?>
                                             <?php else:?> 
-                                                 <label for="<?$question->id?>">
+                                                 <label class="title is-5" for="<?$question->id?>">
                                                     <?=$currentAnswer->description;?>
                                                 </label> 
 
@@ -109,8 +134,6 @@
 
                         <?php endforeach; ?>
                         <?php $count=0?>
-
-                        
 
             
                         </div>
@@ -172,14 +195,14 @@
                 
                 <div>
 
-                    <div class="question__question title is-5">
+                    <div class="question__question title is-4">
                         <?= $question->question.' ('.$question->levels->name.')'?>
                     </div>
                     <div>
                         <ul>
                         <?php foreach ($question->answers->shuffle() as $currentAnswer): ?>
                         <?php $count++; ?>
-                                <li><?= $count.".".$currentAnswer->description; ?></li>
+                                <li class="title is-5"><?= $count.".".$currentAnswer->description; ?></li>
                         <?php endforeach; ?>
                         <?php $count=0; ?>
                         

@@ -12,7 +12,7 @@
       </a>
 <?php endif;?>
 <?php if(empty($connectedUser)):?>
-  <a class="navbar-item is-uppercase" href="<?=route('signup')?>">
+  <a class="navbar-item is-uppercase" href="<?=route('signin')?>">
         Mon compte
       </a>
 <?php endif;?>
